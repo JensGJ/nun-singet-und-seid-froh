@@ -154,7 +154,7 @@
 
 % Magnificat / strophe 3 in here
 
- \markup{ \magnify #1.2 { Strophe 3  } }
+ \markup{ \magnify #1.2 { Strophe 3  }
   \score { 
     %score for Die Hirten
     \new StaffGroup <<

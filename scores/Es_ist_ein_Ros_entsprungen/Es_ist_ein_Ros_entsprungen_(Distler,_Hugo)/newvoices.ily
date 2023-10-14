@@ -5,6 +5,204 @@
 
 \pageBreak
 
+%%%% Magnificat - Strophhe 3
+
+TimeThreeFourSixEight = {
+  \once \override Staff.TimeSignature.stencil = #ly:text-interface::print
+  \once\override Staff.TimeSignature.text = \markup { \combine \musicglyph "three" \lower #2 \musicglyph "four" \parenthesize \combine \musicglyph "six" \lower #2 \musicglyph "eight" }
+  \time 3/4
+}
+
+TimeSixFourSixEight = {
+  \once \override Staff.TimeSignature.stencil = #ly:text-interface::print
+  \once\override Staff.TimeSignature.text = \markup { \combine \musicglyph "six" \lower #2 \musicglyph "four" \parenthesize \combine \musicglyph "six" \lower #2 \musicglyph "eight" }
+  \time 6/4
+}
+
+
+
+globalThreeX = {
+  \global
+  \dynamicUp
+}
+
+MariaVerseThreeX = \relative c'' {
+  \time 4/4
+   \partial 2
+  gis4\p^\markup {\italic ausdrucksvoll} gis |
+ % \time 4/4
+  b2 gis4 gis |
+  gis a2 gis4 |
+  \time 6/4 
+  fis2 e4 \breathe gis2 b4 |
+  fis fis2 fis4 \breathe fis4. fis8 |
+  \time 4/4 
+  fis4 fis \breathe fis cis |
+  \time 6/4
+  e2 ( dis4) cis2 r4 |
+  \time 4/4 
+  gis'4.\mp gis8 gis4 \bar "" gis |
+  \TimeThreeFourSixEight
+b8 b gis gis4 gis8 |
+\time 4/4
+  a4 ( gis4. ) fis8 e4 |
+  \mark \default fis2 
+  e8 \breathe gis4 (b8) |
+  \TimeSixFourSixEight
+fis4 \breathe fis8 fis4 fis8 \bar "!"
+fis fis fis fis4 fis8 |
+fis2 cis4 e dis cis \breathe |
+\time 4/4
+gis'4.\mf gis8 gis4 gis8 gis |
+\time 3/4 
+b4 \bar "" gis \breathe gis8 gis |
+\time 4/4 
+b4 gis \mark \default gis8 gis4 fis8 |
+\time 3/4 
+gis4 \breathe a gis |
+\time 4/4 
+gis4. fis8 e2 \breathe |
+gis2. b4 |
+\time 3/2
+gis8 ( fis4 \breathe fis8^\markup { \italic "frei" } [
+  e cis e fis gis fis]) fis4 |
+  \mark \default % C
+  e dis cis2 r8 gis'\f gis fis |
+  \time 5/4
+  b2 b4 gis gis8 gis |
+  \time 4/4
+  a4. gis8 \breathe fis4 fis |
+  e2 r4 gis |
+  \time 3/4 
+  b b \breathe fis8 gis |
+  \time 4/4
+  e2 ( dis4 cis\> ~ |
+  cis8 [b] cis4) cis r\! | 
+  R1
+
+
+}
+
+MariaOldVerseThreeX = \relative c'' {
+
+}
+
+choirPause = { 
+  \partial 2
+  R2 |
+  R1 |
+  R1 |
+  R1 |
+  R1 |
+  r2 r4
+  
+  
+}
+
+sopVoiceVerseThreeX = \relative c'' {
+ \choirPause
+   b4 | 
+   \time 5/4
+   b2 b4 cis b |
+ \time 3/4
+  b2 gis4 \breathe |
+  \time 4/4
+  a2 gis4 fis |
+  \time 3/2
+  e8. ([fis16]  \bar "" gis8 a4 gis8. [fis16 e8] fis4) fis |
+  \time 3/4
+  e2. |
+  r4 b'\p b ~ |
+  \time 4/4
+  b b cis b |
+  b2 ( gis4 \breathe b |
+  cis dis cis \breathe b |
+  \time 6/4
+  cis dis fis dis4. cis8 b4 |
+  \time 4/4
+  cis2) gis
+  \time 3/4
+  r4 a\p
+  
+  << 
+    {  \voiceOne
+    gis |
+  \time 4/4
+  fis e2 dis4 |
+  \time 3/2
+  e1. }
+  \new Voice {   \voiceTwo \partial 4 s4^\> |  
+                \time 4/4 s1 |
+                 \time 3/2  s1 s4 s8 s8\! }
+  >>
+  
+ \oneVoice
+ R1. |
+ R1. |
+ \time 3/4
+ b'4\mf \breathe b2 |
+ \time 4/4
+ b4 b cis b |
+ \time 3/4 
+ b2\> gis4\! \breathe |
+ \time 3/2
+ a4\p gis2 fis4 e cis |
+\time 4/4
+<<
+   {
+     \voiceOne
+     e4. ( fis8 [ gis b cis\> dis] |
+     cis4. dis8 cis4. dis8 |
+     cis2\pp)
+   }
+   \new Voice {
+     \voiceTwo
+     e,1 ~ | e ~ | e
+   }
+   
+ >>
+ 
+ \oneVoice
+
+  
+   
+
+}
+
+
+altVoiceVerseThreeX = \relative c' {
+  \choirPause
+  fis4\pp |
+
+  e d cis fis
+}
+
+
+tenVoiceVerseThreeX = \relative c' {
+  \choirPause
+}
+
+
+basVoiceVerseThreeX = \relative c {
+   \choirPause
+ }
+
+
+breaksThreeX = {
+  \tempo \markup{ "Choral, stets sehr zurückhaltend" } 4 = 100
+  
+}
+
+breaksThreeXCII = {
+  
+   
+}
+
+
+
+
+%%%% DIE HIRTEN - Strophe 5
+
 globalFiveX = {
   \global
   \dynamicUp
