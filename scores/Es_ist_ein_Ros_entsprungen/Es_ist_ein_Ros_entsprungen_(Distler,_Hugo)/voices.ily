@@ -5,20 +5,23 @@
 origBreak = { \break }
 origNoBreak = { \noBreak }
 
+piuF = ^\markup { \italic più \dynamic f }
+
 global = {
   \autoBeamOff
   \dynamicUp
   \set Score.markFormatter = #format-mark-circle-letters
   \key e \major
+  \numericTimeSignature
 }
 
 %the voices (as well as the lyrics) for each stanza are put into
 %separate variables (which are numbered One, Two, Three, etc.) to
 %arrange the score.ly more clearly
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%          Verse 1           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 1 - Es ist ein Ros            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 globalOne = {
   \global
@@ -164,9 +167,9 @@ breaksOne = {
 }
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%          Verse 2           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 2  - Das Röslein         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 globalTwo = {
   \global
@@ -200,7 +203,10 @@ sopVoiceVerseTwo = \relative c' {
   \time 3/4
   e4.(\> dis8) cis4 |
   \time 3/2
-  b4. \breathe b'8\p \bar "!" b4 b cis b |
+  b4. \breathe b'8\p 
+  \noBreak
+  \bar "!" 
+  b4 b cis b |
   b( a4. gis8[ fis e] fis2) |
   gis1 r2 |
   r2 a gis4 fis |
@@ -352,9 +358,21 @@ breaksTwo = {
   s4*12 \tempo "Zögern" s4*4 \bar "||"
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%          Verse 3           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 3 - Magnificat - Meine Seele/Wie bitten dich  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% OK PDF version at https://www.cpdl.org/wiki/images/f/f1/Distler_Op10_Magnificat.pdf
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 3+1 - Das Blumelein          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pageBreak
+
 globalThree = {
   \global
 }
@@ -509,9 +527,18 @@ breaksThree = {
   s4*14 \tempo "Zögern" s4*4 \bar "||"
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%          Verse 4           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 5 - Die Hirten zu der Stunden   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PDF version https://www.cpdl.org/wiki/images/9/9f/DistlerWeihnachtsgeschichte.pdf (p 43-47 in pdf, pagenum 35-39)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 4+2 - Lob, Ehr sei Gott %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 globalFour = {
   \global
@@ -811,13 +838,9 @@ breaksFour = {
   s4*4 \tempo "Verlangsamen" s4*12 \bar "||"
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%          Verse 5           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%          Verse 5           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%          Verse 5+2 - So singen wir all Amen    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 globalFive = {
   \global

@@ -9,8 +9,9 @@
 
 \paper{
   % system-count = 3
-   systems-per-page = 3
+%   systems-per-page = 3
   % page-count = 2
+  footnote-separator-markup = \markup \null
 }
 
 \midi {

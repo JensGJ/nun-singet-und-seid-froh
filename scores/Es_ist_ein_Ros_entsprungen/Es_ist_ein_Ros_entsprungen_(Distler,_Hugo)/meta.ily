@@ -39,9 +39,9 @@ opus                    = "Die Weihnachtsgeschichte, op. 10"
 noInOpus                = ""
 titleInOpus             = ""
 
-lastEdited              = "14. Oktober 2020" % e.g. "19. September 2015"
-vers                    = "1.2.0" % write "0.0.0" for the first draft
-noInNsusf               = "4" % write "X" as long piece is not ready to be published
+lastEdited              = "2023-10-13" % e.g. "19. September 2015"
+vers                    = "1.5.0" % write "0.0.0" for the first draft
+noInNsusf               = "X" % write "X" as long piece is not ready to be published
 
 % other meta-data, used for the MediaWiki-output
 epoque                  = "Moderne" 

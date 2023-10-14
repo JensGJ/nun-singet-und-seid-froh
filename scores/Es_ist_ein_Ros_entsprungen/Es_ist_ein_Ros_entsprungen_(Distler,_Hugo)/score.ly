@@ -6,10 +6,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % this is not based on any template!
+\version "2.22.2"
 
 % local information (for this particular piece)
 \include "meta.ily"             % metadata for this piece
 \include "voices.ily"           % the tunes, dynamic and articulation marks
+\include "newvoices.ily"
+\include "newlyrics.ily"
+
 \include "lyrics.ily"            % the lyrics within the staves
 \include "output.ily"           % the paper and midi settings for this piece
 
@@ -144,8 +148,13 @@
       }
     }
   }%end of second stanza score
+  
+  \pageBreak
 
-  \markup{ \magnify #1.5 { Strophe 3 } }
+% Magnificat / strophe 3 in here
+
+%  \markup{ \magnify #1.5 { Strophe 3 } }
+  \markup{ \magnify #1.5 { Strophe 4 } }
   \score { %score for third stanza
     \new StaffGroup <<
       \new SemiChoirStaff<<
@@ -222,7 +231,142 @@
     }
   }%end of third stanza score
 
-  \markup{ \magnify #1.5 { Strophe 4 } }
+% 5 - Die Hirten ...
+
+  \markup{ \magnify #1.2 { Strophe 5 \footnote "*"  \line \small { * Die beiden \italic {c.f.} zart hervor! } } }
+  \score { %score for Die Hirten
+    \new StaffGroup <<
+      % Choir 1:
+      \new SemiChoirStaff<<
+        \new Staff \with {
+          %printPartCombineTexts = ##f
+          \consists "Ambitus_engraver"
+          \consists "Volta_engraver"
+        }
+        <<
+          \set Staff.instrumentName =   
+                    \markup {
+            \center-column  {
+              "Sopran I"
+                \line { \smaller \italic "*) (c.f.)" }
+            }
+          }
+        
+          
+          \new Voice = "sop1" { \globalFiveX << \sopIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+        \new Lyrics \lyricsto "sop1" { \sopLyricsVerseFiveX }
+
+        \new Staff \with {
+          \consists "Ambitus_engraver"
+        } <<
+          \set Staff.instrumentName = "Alt I"
+          \new Voice = "alt1" { \globalFiveX << \altIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+        \new Lyrics \lyricsto "alt1" { \altLyricsVerseFiveX }
+
+        \new Staff \with {
+          \consists "Ambitus_engraver"
+        } <<
+          \set Staff.instrumentName = "Tenor I"
+          \new Voice = "ten1" { \clef "G_8" \globalFiveX << \tenIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+        \new Lyrics \lyricsto "ten1" { \tenLyricsVerseFiveX }
+        
+        \new Staff \with {
+          \consists "Ambitus_engraver"
+        } <<
+          \set Staff.instrumentName = "Bass I"
+          \new Voice = "bas1" { \clef bass \globalFiveX << \basIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+         \new Lyrics \lyricsto "bas1" { \basLyricsVerseFiveX }
+      >>
+      
+      % Choir 2:
+      \new SemiChoirStaff  <<
+        \new Staff \with {
+          %printPartCombineTexts = ##f
+          \consists "Ambitus_engraver"
+          \consists "Volta_engraver"
+        }
+        <<
+          \set Staff.instrumentName = 
+          \markup {
+            \center-column  {
+              "Sopran II"
+                \line { \smaller \italic "*) (c.f.)" }
+            }
+          }
+          \new Voice = "sop2" { \globalFiveX << \sopIIVoiceVerseFiveX \breaksFiveXCII >> }
+        >>
+        \new Lyrics \lyricsto "sop2" { \sopLyricsVerseFiveX }
+
+
+        \new Staff \with {
+          \consists "Ambitus_engraver"
+        } <<
+          \set Staff.instrumentName = "Alt II"
+          \new Voice = "alt2" { \globalFiveX << \altIIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+        \new Lyrics \lyricsto "alt2" { \altLyricsVerseFiveX }
+
+
+        \new Staff \with {
+          \consists "Ambitus_engraver"
+        } <<
+          \set Staff.instrumentName = "Tenor II"
+          \new Voice = "ten2" { \clef "G_8" \globalFiveX << \tenIIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+        \new Lyrics \lyricsto "ten2" { \basLyricsVerseFiveX }
+
+        \new Staff \with {
+          \consists "Ambitus_engraver"
+        } <<
+          \set Staff.instrumentName = "Bass II"
+          \new Voice = "bas2" { \clef bass \globalFiveX << \basIIVoiceVerseFiveX \breaksFiveX >> }
+        >>
+        
+        \new Lyrics \lyricsto "bas2" { \basLyricsVerseFiveX }
+
+      >> % end of SemiChoirStaff (choir 2)
+    >>%end of StaffGroup
+    \layout {
+      \context {
+        \StaffGroup
+        \remove "Forbid_line_break_engraver"
+      }
+      \context {
+        \SemiChoirStaff
+        \remove "Forbid_line_break_engraver"
+      }
+      \context {
+        \Score
+        \remove "Timing_translator"
+        \remove "Default_bar_line_engraver"
+        \remove "Repeat_acknowledge_engraver"
+        \remove "Volta_engraver"
+        \remove "Forbid_line_break_engraver"
+      }
+      \context{
+        \Staff
+        \consists "Timing_translator"
+        \consists "Default_bar_line_engraver"
+        \consists "Repeat_acknowledge_engraver"
+        \remove "Forbid_line_break_engraver"
+      }
+      \context {
+        \Voice
+        \remove "Forbid_line_break_engraver"
+      }
+    }
+  }%end of Die Hirten ....
+
+
+
+
+
+% 6 - Lob, Ehr
+\markup{ \magnify #1.2 { Strophe 6 } }
   \score { %score for fourth stanza
     \new SemiChoirStaff<<
       \new Staff \with {
@@ -282,7 +426,10 @@
     }
   }%end of fourth stanza score
 
-  \markup{ \magnify #1.5 { Strophe 5 } }
+
+% 7 - ending
+
+  \markup{ \magnify #1.5 { Strophe 7 } }
   \score { %score for fifth stanza
     \new SemiChoirStaff<<
       \new Staff \with {
@@ -339,390 +486,4 @@
 
 }%end of book
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                            the MIDI producing part:           	                 %
-%    1 midi per each voice per each stanza with the respective voice highlighted   %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-stafftovoice = \midi {
-  \context {
-    \Score
-    \remove "Timing_translator"
-    \remove "Repeat_acknowledge_engraver"
-  }
-  \context {
-    \Staff
-    \remove "Staff_performer"
-    \consists "Timing_translator"
-    \consists "Default_bar_line_engraver"
-    \consists "Repeat_acknowledge_engraver"
-  }
-  \context {
-    \Voice
-    \consists "Staff_performer"
-    \consists "Timing_translator"
-    \consists "Default_bar_line_engraver"
-    \consists "Repeat_acknowledge_engraver"
-  }
-}
-
-%%%%%%%%%%%%%%%%%%%%
-%   first stanza   %
-%%%%%%%%%%%%%%%%%%%%
-
-% sopran
-\book {
-  \bookOutputSuffix "1-sopran"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \highlightedVoice  \globalOne \sopVoiceVerseOne }
-      \new Voice = "alt" { \globalOne \altVoiceVerseOne }
-      \new Voice = "ten" { \globalOne \tenVoiceVerseOne }
-      \new Voice = "bas" { \globalOne \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-% alt
-\book {
-  \bookOutputSuffix "1-alt"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \highlightedVoice \global \altVoiceVerseOne }
-      \new Voice = "ten" { \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-% tenor
-\book {
-  \bookOutputSuffix "1-tenor"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \global \altVoiceVerseOne }
-      \new Voice = "ten" { \highlightedVoice \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-% bass
-\book {
-  \bookOutputSuffix "1-bass"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \global \altVoiceVerseOne }
-      \new Voice = "ten" { \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \highlightedVoice \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-%%%%%%%%%%%%%%%%%%%%
-%  second stanza   %
-%%%%%%%%%%%%%%%%%%%%
-
-% sopran
-\book {
-  \bookOutputSuffix "2-sopran"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \highlightedVoice  \global \sopVoiceVerseTwo }
-      \new Voice = "alt" { \global \altVoiceVerseTwo }
-      \new Voice = "ten" { \global \tenVoiceVerseTwo }
-      \new Voice = "bas" { \global \basVoiceVerseTwo }
-    >>
-    \stafftovoice
-  }
-}
-
-% alt
-\book {
-  \bookOutputSuffix "2-alt"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseTwo }
-      \new Voice = "alt" { \highlightedVoice \global \altVoiceVerseTwo }
-      \new Voice = "ten" { \global \tenVoiceVerseTwo }
-      \new Voice = "bas" { \global \basVoiceVerseTwo }
-    >>
-    \stafftovoice
-  }
-}
-
-% tenor
-\book {
-  \bookOutputSuffix "2-tenor"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseTwo }
-      \new Voice = "alt" { \global \altVoiceVerseTwo }
-      \new Voice = "ten" { \highlightedVoice \global \tenVoiceVerseTwo }
-      \new Voice = "bas" { \global \basVoiceVerseTwo }
-    >>
-    \stafftovoice
-  }
-}
-
-% bass
-\book {
-  \bookOutputSuffix "2-bass"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseTwo }
-      \new Voice = "alt" { \global \altVoiceVerseTwo }
-      \new Voice = "ten" { \global \tenVoiceVerseTwo }
-      \new Voice = "bas" { \highlightedVoice \global \basVoiceVerseTwo }
-    >>
-    \stafftovoice
-  }
-}
-
-%%%%%%%%%%%%%%%%%%%%
-%  third stanza   %
-%%%%%%%%%%%%%%%%%%%%
-
-% sopran
-\book {
-  \bookOutputSuffix "3-sopran"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \highlightedVoice  \global \sopVoiceVerseThree }
-      \new Voice = "alt" { \global \altVoiceVerseThree }
-      \new Voice = "ten" { \global \tenVoiceVerseThree }
-      \new Voice = "basI" { \global \basIVoiceVerseThree }
-      \new Voice = "basII" { \global \basIIVoiceVerseThree }
-    >>
-    \stafftovoice
-  }
-}
-
-% alt
-\book {
-  \bookOutputSuffix "3-alt"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseThree }
-      \new Voice = "alt" { \highlightedVoice \global \altVoiceVerseThree }
-      \new Voice = "ten" { \global \tenVoiceVerseThree }
-      \new Voice = "basI" { \global \basIVoiceVerseThree }
-      \new Voice = "basII" { \global \basIIVoiceVerseThree }
-    >>
-    \stafftovoice
-  }
-}
-
-% tenor
-\book {
-  \bookOutputSuffix "3-tenor"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseThree }
-      \new Voice = "alt" { \global \altVoiceVerseThree }
-      \new Voice = "ten" { \highlightedVoice \global \tenVoiceVerseThree }
-      \new Voice = "basI" { \global \basIVoiceVerseThree }
-      \new Voice = "basII" { \global \basIIVoiceVerseThree }
-    >>
-    \stafftovoice
-  }
-}
-
-% bass
-\book {
-  \bookOutputSuffix "3-bass1"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseThree }
-      \new Voice = "alt" { \global \altVoiceVerseThree }
-      \new Voice = "ten" { \global \tenVoiceVerseThree }
-      \new Voice = "basI" { \highlightedVoice \global \basIVoiceVerseThree }
-      \new Voice = "basII" { \global \basIIVoiceVerseThree }
-    >>
-    \stafftovoice
-  }
-}
-
-% bass
-\book {
-  \bookOutputSuffix "3-bass2"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseThree }
-      \new Voice = "alt" { \global \altVoiceVerseThree }
-      \new Voice = "ten" { \global \tenVoiceVerseThree }
-      \new Voice = "basI" { \global \basIVoiceVerseThree }
-      \new Voice = "basII" { \highlightedVoice \global \basIIVoiceVerseThree }
-    >>
-    \stafftovoice
-  }
-}
-
-%%%%%%%%%%%%%%%%%%%%
-%  fourth stanza   %
-%%%%%%%%%%%%%%%%%%%%
-
-% sopran
-\book {
-  \bookOutputSuffix "4-sopran"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \highlightedVoice  \global \sopVoiceVerseFour }
-      \new Voice = "alt" { \global \altVoiceVerseFour }
-      \new Voice = "ten" { \global \tenVoiceVerseFour }
-      \new Voice = "bas" { \global \basVoiceVerseFour }
-    >>
-    \stafftovoice
-  }
-}
-
-% alt
-\book {
-  \bookOutputSuffix "4-alt"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseFour }
-      \new Voice = "alt" { \highlightedVoice \global \altVoiceVerseFour }
-      \new Voice = "ten" { \global \tenVoiceVerseFour }
-      \new Voice = "bas" { \global \basVoiceVerseFour }
-    >>
-    \stafftovoice
-  }
-}
-
-% tenor
-\book {
-  \bookOutputSuffix "4-tenor"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseFour }
-      \new Voice = "alt" { \global \altVoiceVerseFour }
-      \new Voice = "ten" { \highlightedVoice \global \tenVoiceVerseFour }
-      \new Voice = "bas" { \global \basVoiceVerseFour }
-    >>
-    \stafftovoice
-  }
-}
-
-% bass
-\book {
-  \bookOutputSuffix "4-bass"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseFour }
-      \new Voice = "alt" { \global \altVoiceVerseFour }
-      \new Voice = "ten" { \global \tenVoiceVerseFour }
-      \new Voice = "bas" { \highlightedVoice \global \basVoiceVerseFour }
-    >>
-    \stafftovoice
-  }
-}
-
-%%%%%%%%%%%%%%%%%%%%
-%   fifth stanza   %
-%%%%%%%%%%%%%%%%%%%%
-
-% sopran
-\book {
-  \bookOutputSuffix "5-sopran"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \highlightedVoice  \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \global \altVoiceVerseOne }
-      \new Voice = "ten" { \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-% alt
-\book {
-  \bookOutputSuffix "5-alt"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \highlightedVoice \global \altVoiceVerseOne }
-      \new Voice = "ten" { \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-% tenor
-\book {
-  \bookOutputSuffix "5-tenor"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \global \altVoiceVerseOne }
-      \new Voice = "ten" { \highlightedVoice \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
-
-% bass
-\book {
-  \bookOutputSuffix "5-bass"
-  \score {
-    \unfoldRepeats
-    \new Staff <<
-      \commonVoice
-      \new Voice = "sop" { \global \sopVoiceVerseOne }
-      \new Voice = "alt" { \global \altVoiceVerseOne }
-      \new Voice = "ten" { \global \tenVoiceVerseOne }
-      \new Voice = "bas" { \highlightedVoice \global \basVoiceVerseOne }
-    >>
-    \stafftovoice
-  }
-}
+% \include "midi.ily"
