@@ -154,9 +154,10 @@
 
 % Magnificat / strophe 3 in here
 
- \markup{ \magnify #1.2 { Strophe 3  } }
+\markup{ \magnify #1.2 { Strophe 3  } }
   \score { 
-    \new StaffGroup {
+
+    \new StaffGroup 
       <<
       % Maria:
         \new Staff \with {
@@ -164,21 +165,36 @@
           instrumentName = "Maria"
         } 
   %         \new Voice = "Maria" { \globalThreeX << \MariaVerseThreeX    \breaksThreeX >> }
-        \new Voice = "Maria" { \MariaIntro }
-       
-        \new Lyrics \lyricsto "Maria" { \MariaLyricsVerseThreeX }
+        \new Voice = "Maria" { \globalThreeX \MariaIntro 
+        
+        <<
+        \MariaVerseThreeX  
+          
+        % Choir:
+      \new SemiChoirStaff 
+      \with {
+          %\override SystemStartBracket.color = #red
+          \override SystemStartBracket.X-offset = #-1.2
+          \override InstrumentName.direction = #LEFT
+          \override InstrumentName.self-alignment-X = 0
+       %\override LeftEdge.break-visibility = #(#f #f #t)
+      }
       
-  
-      % Choir:
-      \new SemiChoirStaff  <<
+      <<
         \new Staff \with {
           %printPartCombineTexts = ##f
           \consists "Ambitus_engraver"
           \consists "Volta_engraver"
+          \consists "Instrument_name_engraver"
+        % printPartCombineTexts = ##t
+         
         }
         <<
           \set Staff.instrumentName =  "Sopran"
-            
+          \override InstrumentName.self-alignment-X = #center-visible
+         % \override Score.LeftEdge.break-visibility = #begin-of-line-visible
+          % \set LeftEdge.break-visibility =  #(#t #t #t)
+          % \set Staff.shortInstrumentName ="Sop" 
           \new Voice = "sop" { \globalThreeX << \sopVoiceVerseThreeX \breaksThreeXCII >> }
         >>
         \new Lyrics \lyricsto "sop" { \sopLyricsVerseThreeX }
@@ -189,17 +205,23 @@
           \set Staff.instrumentName = "Alt"
           \new Voice = "alt" { \globalThreeX << \altVoiceVerseThreeX \breaksThreeX >> }
         >>
-        \new Lyrics \lyricsto "alt" { \altLyricsVerseThreeX }
-
-
+        
+        \new Lyrics = "altLyrics" \lyricsto "alt" { \altLyricsVerseThreeX }
+       
+      
+      % TENOR STAFF
         \new Staff \with {
           \consists "Ambitus_engraver"
         } <<
           \set Staff.instrumentName = "Tenor"
+          
           \new Voice = "ten" { \clef "G_8" \globalThreeX << \tenVoiceVerseThreeX \breaksThreeX >> }
         >>
         \new Lyrics \lyricsto "ten" { \tenLyricsVerseThreeX }
+        
+             
 
+%BASS STAFF
         \new Staff \with {
           \consists "Ambitus_engraver"
         } <<
@@ -210,13 +232,20 @@
         \new Lyrics \lyricsto "bas" { \basLyricsVerseThreeX }
 
       >> % end of SemiChoirStaff (choir 2)
-    >> 
-    }
-    %end of StaffGroup
+        >> % end Maria + Choir section
+        } % end New Voice - Maria
+        \new Lyrics \lyricsto "Maria" { \MariaLyricsVerseThreeX }
+     
+     
+      
+    
+      >>   %end of StaffGroup
     \layout {
       \context {
         \StaffGroup
         \remove "Forbid_line_break_engraver"
+        
+        
       }
       \context {
         \SemiChoirStaff
@@ -241,13 +270,15 @@
         \Voice
         \remove "Forbid_line_break_engraver"
       }
+     
     }
-  }% end of Magnificat / Maria 
+  }% end score  ( of Magnificat / Maria )
 
 % end Magnificat insert
 
-%  \markup{ \magnify #1.5 { Strophe 3 } }
-  \markup{ \magnify #1.5 { Strophe 4 } }
+
+
+\markup{ \magnify #1.5 { Strophe 4 } }
   \score { %score for third stanza
     \new StaffGroup <<
       \new SemiChoirStaff<<

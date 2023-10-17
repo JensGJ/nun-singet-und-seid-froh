@@ -53,7 +53,7 @@
   oddHeaderMarkup= \markup {
     \column {
       \line {
-        \place-folio \abs-fontsize #18 \on-the-fly #not-second-page \fromproperty #'page:page-number-string
+        \place-folio \abs-fontsize #11 \on-the-fly #not-second-page \fromproperty #'page:page-number-string
       }
     }
   }
@@ -62,7 +62,7 @@
     \column {
       \fill-line {
         {""}
-        { \place-folio \abs-fontsize #18 \on-the-fly #not-first-page \fromproperty #'page:page-number-string }
+        { \place-folio \abs-fontsize #11 \on-the-fly #not-first-page \fromproperty #'page:page-number-string }
       }
     }
   }

@@ -130,8 +130,8 @@ altLyricsVerseTwoFirstVolta = \lyricmode {
 
 altLyricsVerseTwoSecondVolta = \lyricmode {
   \set associatedVoice = "alt" \skip2
-  ist4 \set associatedVoice = "altTemp" Ma4 -- ri2  -- a,4 \set associatedVoice = "alt" die rei1. -- ne2,
-  \skip2 \skip2 \skip4 die4 uns4 das4 Blüm2 -- lein,8
+  ist4 \set associatedVoice = "altTemp" Ma4 -- ri2  -- a,4 \set associatedVoice = "alt" die rei1. -- ne,2
+  \skip2 \skip2 \skip2 \skip4 die4 uns4 das4 Blüm2 -- lein,8
 
   das8 Blüm-4
 }

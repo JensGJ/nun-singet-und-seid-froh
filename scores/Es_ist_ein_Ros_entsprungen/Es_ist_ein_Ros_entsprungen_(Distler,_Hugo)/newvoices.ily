@@ -26,7 +26,7 @@ globalThreeX = {
   \dynamicUp
 }
 
-MariaVerseThreeX = \relative c'' {
+MariaIntro = \relative c'' {
   \time 4/4
    \partial 2
   gis4\p^\markup {\italic ausdrucksvoll} gis |
@@ -34,8 +34,15 @@ MariaVerseThreeX = \relative c'' {
   b2 gis4 gis |
   gis a2 gis4 |
   \time 6/4 
-  fis2 e4 \breathe gis2 b4 |
-  fis fis2 fis4 \breathe fis4. fis8 |
+  fis2 e4 \breathe gis2 b4 | 
+  fis fis2 \bar ""       fis4 \breathe
+
+ % end introduction  
+}
+
+MariaVerseThreeX = \relative c' {
+  %\MariaIntro
+  fis4. fis8 |
   \time 4/4 
   fis4 fis \breathe fis cis |
   \time 6/4
@@ -57,7 +64,7 @@ gis'4.\mf gis8 gis4 gis8 gis |
 \time 3/4 
 b4 \bar "" gis \breathe gis8 gis |
 \time 4/4 
-b4 gis \mark \default gis8 gis4 fis8 |
+b4 gis \bar "!" \mark \default gis8 gis4 fis8 |
 \time 3/4 
 gis4 \breathe a gis |
 \time 4/4 
@@ -71,14 +78,14 @@ gis8 ( fis4 \breathe fis8^\markup { \italic "frei" } [
   \time 5/4
   b2 b4 gis gis8 gis |
   \time 4/4
-  a4. gis8 \breathe fis4 fis |
+  a4. gis8 \breathe \bar "" fis4 fis |
   e2 r4 gis |
   \time 3/4 
   b b \breathe fis8 gis |
   \time 4/4
   e2 ( dis4 cis\> ~ |
   cis8 [b] cis4) cis r\! | 
-  R1
+  R1  \bar "||"
 
 
 }
@@ -89,14 +96,16 @@ MariaOldVerseThreeX = \relative c'' {
 
 choirPause = { 
   \partial 2
+  s4
+}
+oldChoirPause = {
+  \partial 2
   R2 |
   R1 |
   R1 |
   R1 |
   R1 |
-  r2 r4
-  
-  
+  r2 r4 
 }
 
 sopVoiceVerseThreeX = \relative c'' {
@@ -153,7 +162,7 @@ sopVoiceVerseThreeX = \relative c'' {
      \voiceOne
      e4. ( fis8 [ gis b cis\> dis] |
      cis4. dis8 cis4. dis8 |
-     cis2\pp)
+     cis1\pp)
    }
    \new Voice {
      \voiceTwo
@@ -163,7 +172,7 @@ sopVoiceVerseThreeX = \relative c'' {
  >>
  
  \oneVoice
-
+\bar "||"
   
    
 
@@ -174,22 +183,195 @@ altVoiceVerseThreeX = \relative c' {
   \choirPause
   fis4\pp |
 
-  e d cis fis
+  e d cis fis |
+  \time 3/4
+  fis4. ( gis8 fis4 ) |
+  e \breathe e2 |
+  e e4 |
+  \time 5/4
+  dis4. ( cis8 b4 a ) cis |
+  \time 4/4
+  e2. \bar "!" r4 |
+  \time 3/2
+  b'2\p gis4 b e, e |
+  \time 4/4
+  b'4. ( a8 gis4) fis \breathe |
+  \time 3/4
+  cis'4. ( b8 a4 |
+  gis2 \breathe b4 |
+  cis4.  b8 a4 |
+  \time 4/4
+  gis4 ~ \bar "" gis fis2\> ) |
+  e4 \bar "!" r\! dis\p e\> |
+  \time 3/2
+  dis4. ( gis8 dis4) dis cis2 |
+  \time 4/4
+  b1 |
+  \time 3/2
+  R1.\!
+  \bar ""
+  \time 4/4
+  b2\pp ais4 gis |
+  \time 5/4
+  cis4. e8\> b2 \breathe fis'4\mf |
+  \time 4/4 
+  gis4. b8 gis4 fis |
+  \time 3/4
+  cis2\> b4 \breathe |
+  \time 3/2
+  e4\p dis2 cis4 b4. a8 |
+  \time 4/4
+  <<
+    {
+      \voiceOne
+      % Alto 1
+      gis4. ( b8 [ cis dis] gis4\> ~ |
+      gis8 [ fis] gis4. fis8 [ gis fis ] |
+      gis1\! )
+    }
+    % Alto 2
+    \new Voice {
+      \voiceTwo
+      gis,1 ( ~ | 
+      gis4\> cis4. dis8 gis4 |
+      dis2 cis\pp )
+      \bar "||"
+    }
+  >>
+  
+  
 }
 
 
-tenVoiceVerseThreeX = \relative c' {
+tenVoiceVerseThreeX = \relative c {
   \choirPause
+  fis4\pp |
+  \time 5/4
+  fis2 fis4 gis cis |
+  \time 3/4
+  cis2 cis4 \breathe |
+  \time 5/4
+  cis2 b a4 |
+  gis4. ( a8 b4 cis) a |
+  \time 4/4 
+  b2. r4 |
+  \time 3/2
+  b\p gis2 fis4 e e |
+  \time 3/4
+  dis2 cis4 \breathe |
+  e2 dis4 \breathe |
+  \time 4/4
+  fis2 ( e4 \breathe gis |
+  a gis4. fis8 e4 ~ |
+  e dis\>) cis2 |
+  \time 3/4
+  r4\! cis'\p b\> |
+  \time 4/4
+  cis4. ( b8 gis4 a ~ |
+  \time 3/2
+  a) e2 fis4 gis2 |
+  R1.\! |
+  \time 4/4
+  gis2\pp_\markup {\italic "(c.f.)" } fis4 dis |
+% todo: split voice\
+
+<<
+    % tenor 1
+    \new Voice = "tenIsplit" {
+      
+      \voiceOne
+      e4.^\markup { Jam - } fis8\>^\markup { er -} gis2^\markup { tal } \breathe |
+      \time 5/4 
+      e4\mf^\markup { Du } e^\markup { wol - } e  
+      }
+    
+    %tenor 2
+    % TODO: Fix lyrics and breath mark placement
+    {
+      \voiceTwo
+      e4 cis b \tweak direction #DOWN \breathe e\mf |
+      \time 5/4
+      e2 e4 
+      
+    }
+
+>>
+
+\oneVoice
+      e e | 
+
+\time 3/4
+ fis2\> gis4 \breathe |
+  
+ \time 3/2
+  e2\p e4 fis b8 ( gis4^\markup { \italic "ruhig" } ) fis8 |
+  \time 4/4
+  gis1\> ~ |
+  gis1 ~ |
+  gis1\pp  \bar "||"
+
 }
+
+
+
 
 
 basVoiceVerseThreeX = \relative c {
    \choirPause
+   b4\pp |
+   \time 5/4
+   b2 b4 a gis |
+   fis2 cis'4 \breathe a2 |
+   \time 3/2
+   e'4. (dis8) cis4 \breathe \bar ""
+   b fis' e | 
+   a a e2. \bar "!" r4 | 
+   e\p e2 e4 cis e |
+   \time 4/4
+   b2 ( cis4 b |
+   a gis a \breathe b |
+   \time 6/4 
+   a gis fis gis4. a8 b4 |
+   \time 4/4
+   fis2\>) cis' |
+   \time 3/4 
+   r4\! cis\p gis'\> |
+   \time 4/4
+   cis,2. ( b4 |
+   \time 3/2 
+   a2) gis4 fis e2 |
+   R1.\! |
+   \time 4/4
+   e2\pp fis4. gis8 |
+   a4 a\> e \breathe e'\mf |
+   \time 5/4
+   e2 dis4 cis e |
+   \time 3/4
+   b2\> e4 \breathe |
+   \time 3/2
+   cis2\p b4 a gis fis |
+   \time 4/4
+   <<
+     {
+       \voiceOne
+     cis'1\> ~ |
+     cis1 ~ |
+     cis1\pp
+     }
+     \new Voice {
+         \voiceTwo
+     cis,1 ~ |
+     cis1 ~ |
+     cis1
+       
+     }
+   >>
+   \bar "||"
  }
 
 
 breaksThreeX = {
-  \tempo \markup{ "Choral, stets sehr zurückhaltend" } 4 = 100
+  % \tempo \markup{ "Choral, stets sehr zurückhaltend" } 4 = 100
   
 }
 

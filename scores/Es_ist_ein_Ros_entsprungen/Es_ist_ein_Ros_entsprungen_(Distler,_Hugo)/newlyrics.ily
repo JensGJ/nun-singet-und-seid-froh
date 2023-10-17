@@ -58,10 +58,18 @@ Bis in den En -- gel Saal.
 
 }
 
+tenISplitLyrics = \lyricmode {
+  Jam -- mer -- tal.
+Du wol -- lest
+}
+
+
 basLyricsVerseThreeX = \lyricmode {
 
     Wir bit -- ten dich von Her -- zen,
-du ed -- le Kö -- ni -- gin,
+du ed -- le 
+du ed -- le
+Kö -- ni -- gin,
 durch dei -- nes Soh -- nes Schmer -- zen,
 wann wir fah -- ren da -- hin
 aus die -- sem Jam -- mer -- tal.
