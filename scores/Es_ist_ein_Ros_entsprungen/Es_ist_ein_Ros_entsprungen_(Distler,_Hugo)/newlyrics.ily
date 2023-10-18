@@ -17,6 +17,27 @@ bei de -- nen, die ihn fürch -- ten.“
 
 }
 
+
+MariaLyricsIntro = \lyricmode {
+  „Mei -- ne See -- le er -- hebt Gott, den Her -- ren, und
+mein Geist freut sich,
+ 
+}
+
+MariaLyricsContinued =  \lyricmode {
+  freut sich 
+Got -- tes, mei -- nes Hei -- lands,
+denn er hat die Nied -- rig -- keit sei -- ner Magd an -- ge -- se -- hen.
+Sie -- he, von nun an wer -- den mich prei -- sen al -- le
+Kin -- des -- kind, denn er hat gro -- ße Din -- ge 
+gro -- ße Din -- ge
+an mir ge -- tan,
+der da mäch -- tig ist, und des Na -- me hei -- lig ist.
+Sei -- ne Barm -- her -- zig -- keit wäh -- ret im -- mer für und für,
+bei de -- nen, die ihn fürch -- ten.“
+
+}
+
 sopLyricsVerseThreeX = \lyricmode {
   {
    Wir bit -- ten dich von Her -- zen,

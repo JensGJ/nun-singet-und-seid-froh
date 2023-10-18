@@ -24,10 +24,12 @@ TimeSixFourSixEight = {
 globalThreeX = {
   \global
   \dynamicUp
+  \override Score.NonMusicalPaperColumn.padding = #0.35
 }
 
 MariaIntro = \relative c'' {
   \time 4/4
+  \tempo 4=100
    \partial 2
   gis4\p^\markup {\italic ausdrucksvoll} gis |
  % \time 4/4
@@ -40,8 +42,7 @@ MariaIntro = \relative c'' {
  % end introduction  
 }
 
-MariaVerseThreeX = \relative c' {
-  %\MariaIntro
+MariaContinuedNotes = {
   fis4. fis8 |
   \time 4/4 
   fis4 fis \breathe fis cis |
@@ -71,23 +72,53 @@ gis4 \breathe a gis |
 gis4. fis8 e2 \breathe |
 gis2. b4 |
 \time 3/2
+\tempo \markup { "zögern" }
+%\override TextSpanner #'(bound-details left text) = "zögern.."
+%\startTextSpan
+
+
 gis8 ( fis4 \breathe fis8^\markup { \italic "frei" } [
   e cis e fis gis fis]) fis4 |
   \mark \default % C
   e dis cis2 r8 gis'\f gis fis |
+  %\stopTextSpan
   \time 5/4
+  \tempo \markup { Tempo I }
   b2 b4 gis gis8 gis |
   \time 4/4
   a4. gis8 \breathe \bar "" fis4 fis |
   e2 r4 gis |
   \time 3/4 
-  b b \breathe fis8 gis |
+  b b \breathe 
+  \tempo \markup { zögern }
+  fis8 gis |
   \time 4/4
   e2 ( dis4 cis\> ~ |
   cis8 [b] cis4) cis r\! | 
   R1  \bar "||"
 
 
+}
+
+
+MariaVerseThreeX = \relative c' {
+  %\MariaIntro
+ \MariaContinuedNotes
+}
+
+
+MariaContinued = \relative c' {
+  %\MariaIntro
+  \globalThreeX
+  \bar "!"
+  % \once \override Staff.TimeSignature.stencil = ##f
+  %\override Staff.TimeSignature.color = #red
+  %\override Staff.KeySignature.color = #blue
+  \once \omit Staff.TimeSignature
+  \once \omit Staff.KeySignature
+  \once \omit Staff.Clef
+ \partial 2
+  \MariaContinuedNotes
 }
 
 MariaOldVerseThreeX = \relative c'' {
@@ -110,7 +141,8 @@ oldChoirPause = {
 
 sopVoiceVerseThreeX = \relative c'' {
  \choirPause
-   b4 | 
+ \tempo \markup { Choral, stets sehr zurückhaltend } 4=100
+   b4\pp | 
    \time 5/4
    b2 b4 cis b |
  \time 3/4
@@ -118,7 +150,7 @@ sopVoiceVerseThreeX = \relative c'' {
   \time 4/4
   a2 gis4 fis |
   \time 3/2
-  e8. ([fis16]  \bar "" gis8 a4 gis8. [fis16 e8] fis4) fis |
+  e8.^\markup { \italic "ruhig" } ([fis16]  \bar "" gis8 a4 gis8. [fis16 e8] fis4) fis |
   \time 3/4
   e2. |
   r4 b'\p b ~ |
