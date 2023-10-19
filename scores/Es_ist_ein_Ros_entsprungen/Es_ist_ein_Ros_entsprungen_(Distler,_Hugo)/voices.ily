@@ -7,6 +7,7 @@ origNoBreak = { \noBreak }
 
 piuF = ^\markup { \italic più \dynamic f }
 
+
 global = {
   \autoBeamOff
   \dynamicUp
@@ -403,7 +404,7 @@ sopVoiceVerseThree = \relative c'' {
   \time 3/2
   gis gis b4.( gis8[ fis gis] e4~ |
   \time 4/4
-  e8) \breathe cis8^- e4.^- fis8^- gis4^-\fermata |
+  e8) \breathe cis8^- e4.^- fis8^- gis4 \parenthesize \fermata |
 }
 
 altVoiceVerseThree = \relative c' {
@@ -435,7 +436,7 @@ altVoiceVerseThree = \relative c' {
   \time 4/4
   cis4.( dis8) e4 e |
   \time 6/4
-  e2 \breathe e4-- e4-- cis-- e--\fermata |
+  e2 \breathe e4-- e4-- cis-- e-- \parenthesize \fermata |
 }
 
 tenVoiceVerseThree = \relative c' {
@@ -474,7 +475,7 @@ tenVoiceVerseThree = \relative c' {
   b2 gis \breathe |
   a4 gis2 fis4 |
   e2 cis |
-  << \voiceOne { e4.( fis8 gis2)\fermata } \new Voice { \voiceTwo e1\fermata } >> |
+  << \voiceOne { e4.( fis8 gis2) \parenthesize \fermata } \new Voice { \voiceTwo e1 \parenthesize \fermata } >> |
 }
 
 basIVoiceVerseThree = \relative c {
@@ -494,7 +495,7 @@ basIVoiceVerseThree = \relative c {
   \repeat unfold 6 {
     e4  << \voiceOne { e2 } \new Voice { \voiceTwo b2 } >> \oneVoice \breathe |
   }
-  e4  << \voiceOne { e2 } \new Voice { \voiceTwo b2 } >> |
+  e4  << \voiceOne { e2 \parenthesize \fermata  } \new Voice { \voiceTwo b2 } >> |
 }
 
 basIIVoiceVerseThree = \relative c {
@@ -515,7 +516,7 @@ basIIVoiceVerseThree = \relative c {
   \repeat unfold 6 {
     a4 e2 \breathe |
   }
-  a4 e2 |
+  a4 e2 \parenthesize \fermata |
 }
 
 breaksThree = {
@@ -630,7 +631,7 @@ sopVoiceVerseFour = \relative c'' {
   \time 4/4
   cis4( b2) gis4 |
   ais8[(-- b]-- cis2--\>) cis4-- |
-  << b1--\fermata { s2. s4\! } >> |
+  << b1-- \parenthesize \fermata { s2. s4\! } >> |
 }
 
 altVoiceVerseFour = \relative c' {
@@ -701,7 +702,7 @@ altVoiceVerseFour = \relative c' {
   \time 4/4
   gis( fis2) e4\> |
   \time 3/2
-  fis8([-- gis]-- a2)-- a4-- gis2--\!\fermata |
+  fis8([-- gis]-- a2)-- a4-- gis2--\!  \parenthesize \fermata |
 }
 
 tenVoiceVerseFour = \relative c' {
@@ -761,7 +762,7 @@ tenVoiceVerseFour = \relative c' {
   dis e] fis4. e8 dis4) |
   e \breathe fis dis( cis~--\> |
   \time 3/2
-  cis8[ b])-- a4-- b4-- cis-- b2--\!\fermata |
+  cis8[ b])-- a4-- b4-- cis-- b2--\! \parenthesize \fermata |
 }
 
 basVoiceVerseFour = \relative c' {
@@ -807,7 +808,7 @@ basVoiceVerseFour = \relative c' {
   cis) fis,4^- b1~\> |
   b2 r1\! |
   R1. |
-  b'2^\markup{ \italic (m) \dynamic p \italic { nur sehr zart hervor } } b2 b2 |
+  b'2^\markup{ \bold \italic (m)\dynamic p \italic { nur sehr zart hervor } } b2 b2 |
   cis1 b2 |
   b1. |
   gis1~\> \bar "" gis2
@@ -819,7 +820,7 @@ basVoiceVerseFour = \relative c' {
   fis gis] a4. gis8 fis4) |
   e4 cis(-- dis-- e\>~-- |
   \time 3/2
-  e) cis-- e1--\!\fermata |
+  e) cis-- <<e1-- \parenthesize \fermata  { s2. s4\! }>>  |
 }
 
 breaksFour = {
@@ -877,7 +878,7 @@ sopVoiceVerseFive = \relative c'' {
   b2 gis \breathe |
   a2 gis4 fis~ |
   fis \tempo "Zögern" e2 dis4 |
-  << \voiceTwo { e4.( fis8 gis2) } \new Voice { \voiceOne { e1 } } >> |
+  << \voiceTwo { e4.( fis8 gis2) } \new Voice { \voiceOne { <<e1 {s2.^\> s4\!}  >> } } >> |
      % the odd order of \voiceTwo and \voiceOne is necessary for the correct lyrics spanner
 }
 
@@ -909,7 +910,7 @@ altVoiceVerseFive = \relative c' {
   gis4 (fis8[ e] fis2) |
   e4 \breathe e dis b |
   cis4.( dis8 e4) fis |
-  gis4. (fis8 e2) |
+  gis4.\> (fis8 e2\!) |
 }
 
 tenVoiceVerseFive = \relative c' {
@@ -940,7 +941,7 @@ tenVoiceVerseFive = \relative c' {
   cis4 \breathe cis2 cis4 cis |
   e4.( dis8 b4 cis) b |
   \time 4/4
-  gis8([ a b cis] b2) |
+  gis8\>([ a b cis] b2\!) |
 }
 
 basVoiceVerseFive = \relative c' {
@@ -970,7 +971,7 @@ basVoiceVerseFive = \relative c' {
   r2 r4 cis'4~\pp |
   cis a2 b4 |
   gis2 fis |
-  e1 |
+  <<e1 {s2.\> s4\!} >> |
 }
 
 breaksFive =  {

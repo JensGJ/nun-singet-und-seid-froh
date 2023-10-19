@@ -312,7 +312,8 @@ tenVoiceVerseThreeX = \relative c {
     \new Voice = "tenIsplit" {
       
       \voiceOne
-      e4.^\markup { Jam - } fis8\>^\markup { er -} gis2^\markup { tal } \breathe |
+      %\override Script.padding = #2
+      e4.^\markup { Jam - } fis8\>^\markup { er -} \once \override Stem.length-fraction = #0.9 gis2^\markup { tal } \breathe | 
       \time 5/4 
       e4\mf^\markup { Du } e^\markup { wol - } e  
       }
@@ -607,7 +608,7 @@ tenIIVoiceVerseFiveX = \relative c' {
  gis2 r4\!
  b\mf |
  b cis e2 ~ |
- e4 dis e \breathe b8\f b^\markup{ \italic "ruhig" } ( [ ~ |
+ e4 dis e \breathe b8\f b^\markup{ \smaller \italic "ruhig" } ( [ ~ |
  b cis b8. gis16 e8 fis gis]) a |
  \time 3/2
  b4 b4. (a8 gis4) fis2 |

@@ -28,9 +28,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \book {
-  \include "../../../include/header.ily"
+  \bookpart {
+    
+ \include "../../../include/header.ily"
 
-  \markup{ \magnify #1.2 { Strophe 1 } }
+ % \markup{ \magnify #1.2 { Strophe 1 } }
   \score { %score for first stanza
     \new SemiChoirStaff <<
       \new Staff \with {
@@ -76,7 +78,7 @@
         \consists "Default_bar_line_engraver"
         \consists "Repeat_acknowledge_engraver"
         \remove "Forbid_line_break_engraver"
-      }
+    }
       \context {
         \Voice
         \remove "Forbid_line_break_engraver"
@@ -85,7 +87,7 @@
   } %end of first stanza score
   \pageBreak
 
-  \markup{ \magnify #1.2 { Strophe 2 } }
+ % \markup{ \magnify #1.2 { Strophe 2 } }
   \score { %score for second stanza
     \new SemiChoirStaff <<
       \new Staff \with {
@@ -126,6 +128,7 @@
       >>
     >>%end of SemiChoirStaff
     \layout {
+        
       \context {
         \Score
         \remove "Timing_translator"
@@ -146,39 +149,79 @@
         \Voice
         \remove "Forbid_line_break_engraver"
       }
-    }
+    } % end layout
   }%end of second stanza score
   
-  \pageBreak
 
 
 % Magnificat / strophe 3 in here
 
- \markup{ \magnify #1.2 { Strophe 3  } }
-  \score { 
-    \new StaffGroup {
-      <<
-      % Maria:
+
+%\markup{ \magnify #1.2 { Strophe 3  } }
+\score {
         \new Staff \with {
           \consists "Ambitus_engraver"
           instrumentName = "Maria"
         } 
   %         \new Voice = "Maria" { \globalThreeX << \MariaVerseThreeX    \breaksThreeX >> }
-        \new Voice = "Maria" { \MariaIntro }
-       
-        \new Lyrics \lyricsto "Maria" { \MariaLyricsVerseThreeX }
+        <<
+        \new Voice = "Maria" { \globalThreeX \MariaIntro \hideNotes \tweak X-extent #0 b16 }
+        \new Lyrics \lyricsto "Maria" { \MariaLyricsIntro }
+        >>
+}
+
+  \pageBreak
+
+\score { 
+
+    \new StaffGroup 
+    \with {
+      \override SystemStartBar.color = #red
+      \override SystemStartBrace.color = #yellow
+      \override SystemStartBracket.color = #green
+      \override SystemStartSquare.color = #magenta
       
-  
-      % Choir:
-      \new SemiChoirStaff  <<
+    }
+      <<
+      % Maria:
+        \new Staff \with {
+          \override SystemStartBar.color = #blue
+          \override SystemStartBar.color = #red
+      \override SystemStartBrace.color = #yellow
+      \override SystemStartBracket.color = #green
+      \override SystemStartSquare.color = #magenta
+        } 
+        \new Voice = "Maria" { 
+          
+        \MariaContinued }
+        \new Lyrics \lyricsto "Maria" { \MariaLyricsContinued }
+                 
+        % Choir:
+      \new SemiChoirStaff 
+      \with {
+          %\override SystemStartBracket.color = #red
+          %\override SystemStartBracket.X-offset = #-1.2
+          %\override InstrumentName.direction = #LEFT
+          %\override InstrumentName.self-alignment-X = 0
+       %\override LeftEdge.break-visibility = #(#f #f #t)
+      }
+      
+      % Start semichoirstaff
+      <<
         \new Staff \with {
           %printPartCombineTexts = ##f
           \consists "Ambitus_engraver"
           \consists "Volta_engraver"
+          \consists "Instrument_name_engraver"
+        % printPartCombineTexts = ##t
+         
         }
         <<
           \set Staff.instrumentName =  "Sopran"
-            
+          \override InstrumentName.self-alignment-X = #center-visible
+         % \override Score.LeftEdge.break-visibility = #begin-of-line-visible
+          % \set LeftEdge.break-visibility =  #(#t #t #t)
+          % \set Staff.shortInstrumentName ="Sop" 
           \new Voice = "sop" { \globalThreeX << \sopVoiceVerseThreeX \breaksThreeXCII >> }
         >>
         \new Lyrics \lyricsto "sop" { \sopLyricsVerseThreeX }
@@ -189,17 +232,23 @@
           \set Staff.instrumentName = "Alt"
           \new Voice = "alt" { \globalThreeX << \altVoiceVerseThreeX \breaksThreeX >> }
         >>
-        \new Lyrics \lyricsto "alt" { \altLyricsVerseThreeX }
-
-
+        
+        \new Lyrics = "altLyrics" \lyricsto "alt" { \altLyricsVerseThreeX }
+       
+      
+      % TENOR STAFF
         \new Staff \with {
           \consists "Ambitus_engraver"
         } <<
           \set Staff.instrumentName = "Tenor"
+          
           \new Voice = "ten" { \clef "G_8" \globalThreeX << \tenVoiceVerseThreeX \breaksThreeX >> }
         >>
         \new Lyrics \lyricsto "ten" { \tenLyricsVerseThreeX }
+        
+             
 
+%BASS STAFF
         \new Staff \with {
           \consists "Ambitus_engraver"
         } <<
@@ -210,13 +259,14 @@
         \new Lyrics \lyricsto "bas" { \basLyricsVerseThreeX }
 
       >> % end of SemiChoirStaff (choir 2)
-    >> 
-    }
-    %end of StaffGroup
+      
+      >>   %end of StaffGroup
     \layout {
       \context {
         \StaffGroup
         \remove "Forbid_line_break_engraver"
+        
+        
       }
       \context {
         \SemiChoirStaff
@@ -241,13 +291,16 @@
         \Voice
         \remove "Forbid_line_break_engraver"
       }
+     
     }
-  }% end of Magnificat / Maria 
+  
+  }% end score  ( of Magnificat / Maria )
+
 
 % end Magnificat insert
 
 %  \markup{ \magnify #1.5 { Strophe 3 } }
-  \markup{ \magnify #1.5 { Strophe 4 } }
+ % \markup{ \magnify #1.2 { Strophe 4 } }
   \score { %score for third stanza
     \new StaffGroup <<
       \new SemiChoirStaff<<
@@ -323,10 +376,14 @@
       }
     }
   }%end of third stanza score
+  
+  } % end bookpart
+  \bookpart {
+    
 
 % 5 - Die Hirten ...
 
-  \markup{ \magnify #1.2 { Strophe 5 \footnote "*"  \line \small { * Die beiden \italic {c.f.} zart hervor! } } }
+  %\markup{ \magnify #1.2 { Strophe 5 \footnote "*"  \line \small { * Die beiden \italic {c.f.} zart hervor! } } }
   \score { %score for Die Hirten
     \new StaffGroup <<
       % Choir 1:
@@ -454,12 +511,21 @@
     }
   }%end of Die Hirten ....
 
+\paper {
+  
+  systems-per-page = 2
+  system-count = 5 
+  %max-systems-per-page = 2
+}
 
 
+  } % end bookpart, die Hirten
+  
+  \bookpart {
 
 
 % 6 - Lob, Ehr
-\markup{ \magnify #1.2 { Strophe 6 } }
+%\markup{ \magnify #1.2 { Strophe 6 } }
   \score { %score for fourth stanza
     \new SemiChoirStaff<<
       \new Staff \with {
@@ -518,12 +584,22 @@
       }
     }
   }%end of fourth stanza score
+  
+  \paper {
+  systems-per-page = 4
+  system-count = 15
+}
 
+  } % end bookpart, 6
+
+
+\bookpart {
+    
 %\pageBreak
 
 % 7 - ending
 
-  \markup{ \magnify #1.5 { Strophe 7 } }
+  %\markup{ \magnify #1.2 { Strophe 7 } }
   \score { %score for fifth stanza
     \new SemiChoirStaff<<
       \new Staff \with {
@@ -577,7 +653,11 @@
       }
     }
   }%end of fifth stanza score
-
+  } % end bookpart
+%\paper {
+%  systems-per-page = 3
+%}
 }%end of book
+
 
 % \include "midi.ily"

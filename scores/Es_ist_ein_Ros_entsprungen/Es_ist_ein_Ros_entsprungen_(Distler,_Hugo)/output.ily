@@ -5,11 +5,12 @@
 %               please contact us at mail@nun-singet-und-seid-froh.info                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#(set-global-staff-size 18)
+% #(set-global-staff-size 18)
+#(set-global-staff-size 16)
 
 \paper{
   % system-count = 3
-%   systems-per-page = 3
+  systems-per-page = 3
   % page-count = 2
   footnote-separator-markup = \markup \null
 }
