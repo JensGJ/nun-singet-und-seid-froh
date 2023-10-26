@@ -50,6 +50,9 @@
   right-margin = 2\cm
   first-page-number = 0
   ragged-right = ##f
+  ragged-bottom = ##f
+  ragged-last-bottom = ##f
+system-system-spacing = #'((basic-distance . 2.1) (padding . 2))
   oddHeaderMarkup= \markup {
     \column {
       \line {
@@ -67,7 +70,7 @@
     }
   }
 
-  %system-separator-markup = \slashSeparator
+%  system-separator-markup = \slashSeparator
   #(define fonts
      (make-pango-font-tree "EBGaramond"
        "Nimbus Sans"
