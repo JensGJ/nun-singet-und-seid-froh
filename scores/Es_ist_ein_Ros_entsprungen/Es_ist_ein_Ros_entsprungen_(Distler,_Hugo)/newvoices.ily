@@ -194,7 +194,7 @@ sopVoiceVerseThreeX = \relative c'' {
      \voiceOne
      e4. ( fis8 [ gis b cis\> dis] |
      cis4. dis8 cis4. dis8 |
-     cis1\pp)
+     cis2\pp) r2
    }
    \new Voice {
      \voiceTwo
@@ -340,8 +340,8 @@ tenVoiceVerseThreeX = \relative c {
   e2\p e4 fis b8 ( gis4^\markup { \italic "ruhig" } ) fis8 |
   \time 4/4
   gis1\> ~ |
-  gis1 ~ |
-  gis1\pp  \bar "||"
+  gis2\pp r2 |
+  R1  \bar "||"
 
 }
 
@@ -388,17 +388,17 @@ basVoiceVerseThreeX = \relative c {
      {
        \voiceOne
      cis'1\> ~ |
-     cis1 ~ |
-     cis1\pp
+     cis2\pp 
      }
      \new Voice {
          \voiceTwo
      cis,1 ~ |
-     cis1 ~ |
-     cis1
-       
+     cis2 
      }
    >>
+   \oneVoice
+   r2 |
+     R1
    \bar "||"
  }
 
